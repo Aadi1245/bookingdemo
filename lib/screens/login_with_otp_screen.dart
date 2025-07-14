@@ -1,6 +1,9 @@
+import 'package:demoappfortest/utils/app_colors.dart';
 import 'package:demoappfortest/utils/app_custom_theme.dart';
 import 'package:demoappfortest/utils/app_sizes.dart';
 import 'package:flutter/material.dart';
+
+import '../utils/app_custom_theme.dart';
 
 class LoginWithOtpScreen extends StatefulWidget {
   const LoginWithOtpScreen({super.key});
@@ -101,18 +104,19 @@ class _LoginWithOtpScreenState extends State<LoginWithOtpScreen>
             Container(
               height: MediaQuery.of(context).size.height * 0.6,
               // margin: ,
-              padding: const EdgeInsets.all(14),
+              padding: AppSizes.responsivePadding(context),
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: AppColors.lightColorScheme.onPrimary,
                 borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(30),
-                    topRight: Radius.circular(30)),
+                    topLeft: Radius.circular(AppSizes.radiusXl),
+                    topRight: Radius.circular(AppSizes.radiusXl)),
                 boxShadow: [
-                  BoxShadow(
-                    color: Colors.black26,
-                    blurRadius: 8,
-                    offset: Offset(0, 4),
-                  ),
+                  customTheme.shadows.small.first,
+                  // BoxShadow(
+                  //   color: Colors.black26,
+                  //   blurRadius: 8,
+                  //   offset: Offset(0, 4),
+                  // ),
                 ],
               ),
               child: Center(
