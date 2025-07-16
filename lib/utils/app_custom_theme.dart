@@ -178,7 +178,7 @@ class AppGradients {
 
   static const AppGradients light = AppGradients(
     primary: LinearGradient(
-      colors: [Color(0xFF6D9EFF), Color(0xFF8AABFF)],
+      colors: [Color.fromARGB(255, 7, 65, 182), Color(0xFF8AABFF)],
       begin: Alignment.topLeft,
       end: Alignment.bottomRight,
     ),
