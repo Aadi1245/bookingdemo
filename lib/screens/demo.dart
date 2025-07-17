@@ -53,11 +53,15 @@ class _DemoState extends State<Demo> {
             SizedBox(height: 16),
             Container(
               width: double.infinity,
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(5.0),
               margin: const EdgeInsets.symmetric(horizontal: 12.0),
               decoration: BoxDecoration(
                 color: AppColors.primaryBlue,
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(10),
+                    topRight: Radius.circular(10),
+                    bottomLeft: Radius.circular(-20),
+                    bottomRight: Radius.circular(-20)),
                 boxShadow: [
                   BoxShadow(
                     color: Colors.grey.withOpacity(0.5),
@@ -68,12 +72,49 @@ class _DemoState extends State<Demo> {
                 ],
               ),
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     'Bus Service Name',
                     textAlign: TextAlign.left,
-                    style: TextStyle(color: AppColors.neutral100, fontSize: 16),
+                    style: TextStyle(color: AppColors.neutral100, fontSize: 12),
                   ),
+                  Text(
+                    'Pune to Mumbai Central via Swargate',
+                    textAlign: TextAlign.left,
+                    style: TextStyle(
+                        color: AppColors.neutral100,
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  Text(
+                    'Boarding: Swargate',
+                    textAlign: TextAlign.left,
+                    style: TextStyle(
+                        color: AppColors.neutral100,
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  Row(
+                    children: [
+                      Container(
+                        height: 10,
+                        width: 10,
+                        decoration: BoxDecoration(
+                          color: AppColors.neutral100,
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                      ),
+                      Spacer(),
+                      Container(
+                        decoration: BoxDecoration(
+                          color: AppColors.neutral100,
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                      )
+                    ],
+                  )
                 ],
               ),
             ),
