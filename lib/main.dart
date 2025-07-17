@@ -1,4 +1,5 @@
 // lib/main.dart
+import 'package:demoappfortest/screens/demo.dart';
 import 'package:demoappfortest/screens/login_with_otp_screen.dart';
 import 'package:demoappfortest/utils/app_theme.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +21,7 @@ class BusBookingApp extends StatelessWidget {
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
       themeMode: ThemeMode.system, // or ThemeMode.light / dark
-      home: const LoginWithOtpScreen(),
+      home: const Demo(), //LoginWithOtpScreen(),
     );
   }
 }

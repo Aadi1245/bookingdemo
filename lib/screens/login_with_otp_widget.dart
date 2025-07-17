@@ -1,3 +1,4 @@
+import 'package:demoappfortest/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -49,37 +50,44 @@ class _SixDigitBoxInputState extends State<SixDigitBoxInput> {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: List.generate(6, (index) {
-        return SizedBox(
-          width: 52,
-          height: 52,
-          child: TextField(
-            controller: _controllers[index],
-            focusNode: _focusNodes[index],
-            keyboardType: TextInputType.number,
-            maxLength: 1,
-            textAlign: TextAlign.center,
-            inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-            decoration: InputDecoration(
-              counterText: "",
-              filled: true,
-              fillColor: Colors.grey.shade200,
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(color: Colors.grey.shade400, width: 1),
+    return Scaffold(
+      backgroundColor: AppColors.lightColorScheme.onSecondary,
+      body: Center(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: List.generate(6, (index) {
+            return SizedBox(
+              width: 52,
+              height: 52,
+              child: TextField(
+                controller: _controllers[index],
+                focusNode: _focusNodes[index],
+                keyboardType: TextInputType.number,
+                maxLength: 1,
+                textAlign: TextAlign.center,
+                inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                decoration: InputDecoration(
+                  counterText: "",
+                  filled: true,
+                  fillColor: Colors.grey.shade200,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide:
+                        BorderSide(color: Colors.grey.shade400, width: 1),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: BorderSide(color: Colors.black, width: 2),
+                  ),
+                ),
+                onChanged: (value) => _onTextChanged(index, value),
+                onSubmitted: (_) =>
+                    _onTextChanged(index, _controllers[index].text),
               ),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(color: Colors.black, width: 2),
-              ),
-            ),
-            onChanged: (value) => _onTextChanged(index, value),
-            onSubmitted: (_) => _onTextChanged(index, _controllers[index].text),
-          ),
-        );
-      }).expand((widget) => [widget, const SizedBox(width: 4)]).toList(),
+            );
+          }).expand((widget) => [widget, const SizedBox(width: 4)]).toList(),
+        ),
+      ),
     );
   }
 }
