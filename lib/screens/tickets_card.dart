@@ -32,9 +32,9 @@ class TicketWidget extends StatelessWidget {
                 ),
                 Container(
                   padding: EdgeInsets.all(4),
-                  color: Colors.red,
+                  color: Colors.blue,
                   child: Text(
-                    'Pune to Mumbai Central via Swargate',
+                    'Pandhapur to Mumbai Central via Swargate',
                     style: TextStyle(color: Colors.white, fontSize: 12),
                   ),
                 ),
@@ -100,11 +100,11 @@ class TicketWidget extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('1. John Doe', style: TextStyle(fontSize: 14)),
+                Text('1. Hiroshi Patel', style: TextStyle(fontSize: 14)),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('Age 30', style: TextStyle(fontSize: 12)),
+                    Text('Age 32', style: TextStyle(fontSize: 12)),
                     Text('M', style: TextStyle(fontSize: 12)),
                   ],
                 ),
@@ -114,7 +114,7 @@ class TicketWidget extends StatelessWidget {
             Text('Phone', style: TextStyle(fontWeight: FontWeight.bold)),
             Text('+91 9876543210'),
             SizedBox(height: 20),
-            Divider(color: Colors.red, thickness: 2),
+            Divider(color: Colors.blue, thickness: 2),
             SizedBox(height: 10),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -147,7 +147,7 @@ class TicketWidget extends StatelessWidget {
               ],
             ),
             SizedBox(height: 10),
-            Divider(color: Colors.red, thickness: 2),
+            Divider(color: Colors.blue, thickness: 2),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [

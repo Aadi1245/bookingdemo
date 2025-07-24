@@ -55,13 +55,15 @@ class TicketCard extends StatelessWidget {
         children: [
           // Header with Service Name and Route
           Container(
+            width: double.infinity,
             padding: const EdgeInsets.all(8.0),
             decoration: BoxDecoration(
               color: Colors.blue[700],
               borderRadius: BorderRadius.circular(8.0),
             ),
-            child: Row(
+            child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   serviceName,
@@ -75,7 +77,7 @@ class TicketCard extends StatelessWidget {
                   route,
                   style: const TextStyle(
                     color: Colors.white,
-                    fontSize: 16.0,
+                    fontSize: 14.0,
                   ),
                 ),
               ],
