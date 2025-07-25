@@ -13,7 +13,7 @@ class AppWidgetThemes {
   static ElevatedButtonThemeData get elevatedButtonTheme {
     return ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
-        minimumSize: const Size(double.infinity, AppSizes.buttonHeight),
+        minimumSize: Size(double.infinity, AppSizes.buttonHeightSm),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(AppSizes.radiusMd),
         ),
@@ -32,7 +32,7 @@ class AppWidgetThemes {
   static TextButtonThemeData get textButtonTheme {
     return TextButtonThemeData(
       style: TextButton.styleFrom(
-        minimumSize: const Size(double.infinity, AppSizes.buttonHeight),
+        minimumSize: const Size(double.infinity, AppSizes.buttonHeightMd),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(AppSizes.radiusMd),
         ),
@@ -49,7 +49,7 @@ class AppWidgetThemes {
   static OutlinedButtonThemeData get outlinedButtonTheme {
     return OutlinedButtonThemeData(
       style: OutlinedButton.styleFrom(
-        minimumSize: const Size(double.infinity, AppSizes.buttonHeight),
+        minimumSize: Size(double.infinity, AppSizes.appBarHeightMd),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(AppSizes.radiusMd),
         ),

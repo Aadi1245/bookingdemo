@@ -119,7 +119,7 @@ class _LoginWithOtpScreenState extends State<LoginWithOtpScreen>
           gradient: customTheme.gradients.primary,
         ),
         padding: EdgeInsets.symmetric(
-            horizontal: AppSizes.isMobile(context)
+            horizontal: AppSizes.isTablet(context)
                 ? customTheme.spacing.md
                 : AppSizes.isTablet(context)
                     ? customTheme.spacing.lg
@@ -141,8 +141,8 @@ class _LoginWithOtpScreenState extends State<LoginWithOtpScreen>
                         return Transform.scale(
                           scale: _pulseAnimation.value,
                           child: Container(
-                            height: AppSizes.isMobile(context) ? 80 : 100,
-                            width: AppSizes.isMobile(context) ? 80 : 100,
+                            height: !AppSizes.isTablet(context) ? 80 : 100,
+                            width: AppSizes.isTablet(context) ? 80 : 100,
                             decoration: BoxDecoration(
                               color: AppColors.lightColorScheme.onPrimary,
                               borderRadius: BorderRadius.circular(100),
@@ -170,7 +170,7 @@ class _LoginWithOtpScreenState extends State<LoginWithOtpScreen>
                             ),
                             child: Padding(
                               padding: EdgeInsets.all(
-                                  AppSizes.isMobile(context) ? 16 : 20),
+                                  AppSizes.isTablet(context) ? 16 : 20),
                               child: Image.asset('assets/images/logo.png'),
                             ),
                           ),
@@ -209,7 +209,7 @@ class _LoginWithOtpScreenState extends State<LoginWithOtpScreen>
                               AppTypography.textTheme.headlineMedium!.copyWith(
                             fontWeight: FontWeight.w700,
                             color: AppColors.lightColorScheme.onPrimary,
-                            fontSize: AppSizes.isMobile(context) ? 24 : 28,
+                            fontSize: AppSizes.isTablet(context) ? 24 : 28,
                           ),
                           textAlign: TextAlign.center,
                         ),
@@ -219,7 +219,7 @@ class _LoginWithOtpScreenState extends State<LoginWithOtpScreen>
                           style: AppTypography.textTheme.bodyMedium!.copyWith(
                             color: AppColors.lightColorScheme.onPrimary
                                 .withOpacity(0.8),
-                            fontSize: AppSizes.isMobile(context) ? 14 : 16,
+                            fontSize: AppSizes.isTablet(context) ? 14 : 16,
                           ),
                           textAlign: TextAlign.center,
                         ),
@@ -239,7 +239,7 @@ class _LoginWithOtpScreenState extends State<LoginWithOtpScreen>
                   child: Container(
                     height: MediaQuery.of(context).size.height * 0.55,
                     padding:
-                        EdgeInsets.all(AppSizes.isMobile(context) ? 20 : 24),
+                        EdgeInsets.all(AppSizes.isTablet(context) ? 20 : 24),
                     decoration: BoxDecoration(
                       color: AppColors.lightColorScheme.onPrimary,
                       borderRadius: BorderRadius.only(
@@ -279,7 +279,7 @@ class _LoginWithOtpScreenState extends State<LoginWithOtpScreen>
                                 AppTypography.textTheme.headlineSmall!.copyWith(
                               fontWeight: FontWeight.w700,
                               color: Colors.black87,
-                              fontSize: AppSizes.isMobile(context) ? 20 : 24,
+                              fontSize: AppSizes.isTablet(context) ? 20 : 24,
                             ),
                           ),
                           SizedBox(height: AppSizes.sm),
@@ -287,7 +287,7 @@ class _LoginWithOtpScreenState extends State<LoginWithOtpScreen>
                             "We'll send you a verification code to verify your phone number",
                             style: AppTypography.textTheme.bodyMedium!.copyWith(
                               color: Colors.grey[600],
-                              fontSize: AppSizes.isMobile(context) ? 14 : 16,
+                              fontSize: AppSizes.isTablet(context) ? 14 : 16,
                             ),
                           ),
                           SizedBox(height: AppSizes.xl),
@@ -305,7 +305,7 @@ class _LoginWithOtpScreenState extends State<LoginWithOtpScreen>
                           // Enhanced Text Field
                           AnimatedContainer(
                             duration: Duration(milliseconds: 200),
-                            height: AppSizes.buttonHeight,
+                            height: AppSizes.appBarHeightSm,
                             decoration: BoxDecoration(
                               color: Colors.grey[50],
                               borderRadius: BorderRadius.circular(16),
@@ -410,7 +410,7 @@ class _LoginWithOtpScreenState extends State<LoginWithOtpScreen>
                           AnimatedContainer(
                             duration: Duration(milliseconds: 200),
                             width: double.infinity,
-                            height: AppSizes.buttonHeight,
+                            height: AppSizes.appBarHeightSm,
                             child: ElevatedButton(
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: isValidNumber
