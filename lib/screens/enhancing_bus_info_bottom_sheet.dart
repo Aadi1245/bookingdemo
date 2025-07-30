@@ -1,5 +1,8 @@
 // Enhanced Bottom Sheet Widget
 import 'dart:ui';
+import 'package:demoappfortest/widgets/contact_details_card.dart';
+import 'package:demoappfortest/widgets/passenger_card.dart';
+import 'package:demoappfortest/widgets/travel_info_card.dart';
 import 'package:flutter/material.dart';
 
 // You'll need to import your BusInfo class or define it here
@@ -411,14 +414,25 @@ class _EnhancedBusInfoBottomSheetState
   }
 
   Widget _buildPassengersTab() {
-    return Column(
-      children: [
-        _buildPassengerInfo('Total Seats', '40'),
-        _buildPassengerInfo('Available', '15'),
-        _buildPassengerInfo('Booked', '25'),
-        _buildPassengerInfo('Female Only', '8'),
-        _buildPassengerInfo('Male Only', '2'),
-      ],
+    return SingleChildScrollView(
+      // padding: const EdgeInsets.all(12),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: const [
+          TravelerInfoCard(
+            boardingInfo: "Mon, 5 Aug | 10:00 AM",
+            boardingPoint: "Majestic Bus Stand",
+            droppingInfo: "Mon, 5 Aug | 4:00 PM",
+            droppingPoint: "Indiranagar Metro",
+            seatCount: 8,
+            seatDetails: ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8'],
+          ),
+          SizedBox(height: 16),
+          ContactDetailsCard(),
+          SizedBox(height: 16),
+          PassengerCard(),
+        ],
+      ),
     );
   }
 
@@ -629,3 +643,109 @@ class _EnhancedBusInfoBottomSheetState
     );
   }
 }
+
+
+
+
+
+
+
+//Droping point
+
+// String? _selectedDroppingPoint;
+
+// Widget _buildDroppingTab() {
+//   final dpDetails = widget.tripData?.dropingpoint?.dpDetails;
+
+//   if (dpDetails == null || dpDetails.isEmpty) {
+//     return const Center(child: Text("No dropping points available"));
+//   }
+
+//   return Column(
+//     children: List.generate(dpDetails.length, (int index) {
+//       final detail = dpDetails[index];
+
+//       final String venue = detail.venue ?? '';
+//       final String dropTime = detail.droptime != null
+//           ? DateFormat('hh:mm a').format(DateTime.parse(detail.droptime.toString()))
+//           : '--:--';
+//       final String stationName = detail.stnname ?? '';
+//       final String selectedValue = '$venue-$dropTime';
+
+//       return _buildDroppingPoint(
+//         venue,
+//         dropTime,
+//         stationName,
+//         groupValue: _selectedDroppingPoint,
+//         selectedValue: selectedValue,
+//         onTap: () {
+//           setState(() {
+//             _selectedDroppingPoint = selectedValue;
+//           });
+//           print('Selected dropping point: $venue at $dropTime');
+//         },
+//       );
+//     }),
+//   );
+// }
+
+// Widget _buildDroppingPoint(
+//   String location,
+//   String time,
+//   String description, {
+//   VoidCallback? onTap,
+//   required String? groupValue,
+//   required String selectedValue,
+// }) {
+//   return Container(
+//     margin: EdgeInsets.only(bottom: 16),
+//     padding: EdgeInsets.all(12),
+//     decoration: BoxDecoration(
+//       border: Border.all(color: Colors.grey[300]!),
+//       borderRadius: BorderRadius.circular(8),
+//     ),
+//     child: ListTile(
+//       contentPadding: EdgeInsets.zero,
+//       title: Text(
+//         location,
+//         style: TextStyle(
+//           fontSize: 14,
+//           fontWeight: FontWeight.w500,
+//         ),
+//       ),
+//       subtitle: Column(
+//         crossAxisAlignment: CrossAxisAlignment.start,
+//         children: [
+//           Text(
+//             time,
+//             style: TextStyle(
+//               fontSize: 12,
+//               color: Colors.red,
+//               fontWeight: FontWeight.bold,
+//             ),
+//           ),
+//           Text(
+//             description,
+//             style: TextStyle(
+//               fontSize: 12,
+//               color: Colors.grey[600],
+//             ),
+//           ),
+//         ],
+//       ),
+//       leading: Radio<String>(
+//         value: selectedValue,
+//         groupValue: groupValue,
+//         onChanged: (value) {
+//           if (onTap != null) {
+//             onTap();
+//           }
+//         },
+//       ),
+//       onTap: onTap,
+//     ),
+//   );
+// }
+
+
+

@@ -1,5 +1,6 @@
 import 'package:demoappfortest/screens/demo.dart';
 import 'package:demoappfortest/screens/login_with_otp_widget.dart';
+import 'package:demoappfortest/screens/razor_pay_screen.dart';
 import 'package:demoappfortest/screens/seat_selection_screen.dart';
 import 'package:demoappfortest/utils/app_colors.dart';
 import 'package:demoappfortest/utils/app_custom_theme.dart';
@@ -106,7 +107,8 @@ class _LoginWithOtpScreenState extends State<LoginWithOtpScreen>
     // Navigate to OTP screen
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => SeatBookingScreen()),
+      MaterialPageRoute(
+          builder: (context) => RazorpayPage()), //SeatBookingScreen()),
     );
   }
 
