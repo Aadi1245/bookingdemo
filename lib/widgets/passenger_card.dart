@@ -6,7 +6,11 @@ import 'package:demoappfortest/utils/app_typography.dart';
 import 'package:flutter/material.dart';
 
 class PassengerCard extends StatefulWidget {
-  const PassengerCard({super.key});
+  final Set<String>? selectedSeats;
+  const PassengerCard({
+    super.key,
+    this.selectedSeats,
+  });
 
   @override
   State<PassengerCard> createState() => _PassengerCardState();
@@ -54,6 +58,31 @@ class _PassengerCardState extends State<PassengerCard>
       builder: (_) => _AddPassengerForm(
         onPassengerAdded: (passenger) async {
           await Session.savePassenger(passenger);
+          // var noOfPass = passengers.length;
+          // Passenger psn = Passenger(
+          //   name: passenger.name,
+          //   age: passenger.age,
+          //   gender: passenger.gender,
+          //   seatNo: widget.selectedSeats?.elementAt(noOfPass) ?? '',
+          //   fare: '100', // Example fare, replace with actual logic
+          // );
+//           .............................
+// var seats = widget.selectedSeats?.length;
+//           if (seats != null && seats > 0) {
+
+//           // passengers.map((p, index) {
+//           //   p[index].seatNo = widget.selectedSeats![index??0];
+//           //   // p[index].fare = widget.selectedSeats[index??0];
+//           // });
+
+//             passenger.seatNo = widget.selectedSeats!.first;
+//             passenger.fare = '100'; // Example fare, replace with actual logic
+//           }
+//           .............
+          passengers.add(passenger);
+          // selectedPassengers.add(psn);
+          await Session.saveAllPassengers(passengers);
+          // print("-----------selectedPassengers' ${selectedPassengers}");
           _loadPassengers();
           Navigator.pop(context);
         },
@@ -215,7 +244,12 @@ class _PassengerCardState extends State<PassengerCard>
                 child: Column(
                   children: List.generate(passengers.length, (index) {
                     final p = passengers[index];
-                    final isSelected = selectedPassengers.contains(p);
+
+                    final isSelected = selectedPassengers.any((sp) =>
+                        sp.name == p.name &&
+                        sp.age == p.age &&
+                        sp.gender == p.gender);
+
                     return AnimatedContainer(
                       duration: Duration(milliseconds: 200 + (index * 50)),
                       margin: const EdgeInsets.only(bottom: 5),
@@ -245,9 +279,26 @@ class _PassengerCardState extends State<PassengerCard>
                           onTap: () {
                             setState(() {
                               if (isSelected) {
-                                selectedPassengers.remove(p);
+                                selectedPassengers.removeWhere((sp) =>
+                                    sp.name == p.name &&
+                                    sp.age == p.age &&
+                                    sp.gender == p.gender);
                               } else {
-                                selectedPassengers.add(p);
+                                int seatIndex = selectedPassengers.length;
+                                String seatNo = widget.selectedSeats
+                                        ?.elementAt(seatIndex) ??
+                                    '';
+
+                                Passenger psn = Passenger(
+                                  name: p.name,
+                                  age: p.age,
+                                  gender: p.gender,
+                                  seatNo: seatNo,
+                                  fare: '100',
+                                );
+
+                                selectedPassengers.add(psn);
+                                print("Selected Passenger: ${psn.toJson()}");
                               }
                             });
                           },
@@ -260,9 +311,26 @@ class _PassengerCardState extends State<PassengerCard>
                                   onChanged: (value) {
                                     setState(() {
                                       if (value == true) {
-                                        selectedPassengers.add(p);
+                                        int seatIndex =
+                                            selectedPassengers.length;
+                                        String seatNo = widget.selectedSeats
+                                                ?.elementAt(seatIndex) ??
+                                            '';
+
+                                        Passenger psn = Passenger(
+                                          name: p.name,
+                                          age: p.age,
+                                          gender: p.gender,
+                                          seatNo: seatNo,
+                                          fare: '100',
+                                        );
+
+                                        selectedPassengers.add(psn);
                                       } else {
-                                        selectedPassengers.remove(p);
+                                        selectedPassengers.removeWhere(
+                                            (element) =>
+                                                element.name == p.name &&
+                                                element.age == p.age);
                                       }
                                     });
                                   },
